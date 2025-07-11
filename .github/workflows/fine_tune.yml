@@ -1,4 +1,24 @@
 name: Start fine-tune
-  run: python scripts/start_finetune.py
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fine_tune_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install openai python-dotenv
+
+      - name: Run fine-tune script
+        run: python scripts/start_finetune.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
