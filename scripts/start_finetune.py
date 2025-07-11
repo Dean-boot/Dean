@@ -5,7 +5,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # 上傳訓練資料
 upload = client.files.create(
-    file=open("data/your_dataset.jsonl", "rb"),
+    file=open("data/training_data.jsonl", "rb"),
     purpose="fine-tune"
 )
 print("✅ 檔案上傳成功：", upload.id)
