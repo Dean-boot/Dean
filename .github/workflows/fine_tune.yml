@@ -1,4 +1,4 @@
-- name: Start fine-tune
+name: Start fine-tune
   run: python scripts/start_finetune.py
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
